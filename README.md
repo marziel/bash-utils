@@ -10,6 +10,6 @@ Miscellaneous GNU Bash scripts for more comfortable usage of some Linux tools.
 * **lines_from_to**: prints lines [start, end] from the given file
 * **perms_dig**: prints the access rights of the given file in the numeric form
 * **retno**: explains the given program return code
-* **which_compiler**: tries to find the information about which compiler was used to build an executable
+* **which_compiler**: tries to find the information about which compiler was used to build the given executable
 
 Used on Debian Testing.
