@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Please give one file name."
+    exit 1
+fi
+
+stat "$1" | grep -P 'Uid.+Gid' | cut -d '(' -f 2 | cut -d '/' -f 1

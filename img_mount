@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "$1" ]; then
+    echo "Image file name not given or file doesn't exist." 1>&2
+    exit 1
+fi
+
+if [ `whoami` != "root" ]; then
+    echo "Please execute as root." 1>&2
+    exit 1
+fi
+
+OFF_SECTORS=`parted -s $1 unit s print | tr -s " " | grep -P '^ [1-9]' | sed -n 2p | cut -d ' ' -f 3 | perl -pe 's/s//g'`
+OFF_BYTES=`echo "$OFF_SECTORS * 512" | bc -l`
+mount -o loop,offset=$OFF_BYTES $1 /usr/local/mnt && echo "Mounted $1 under /usr/local/mnt."

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Please give one executable file name."
+    exit 1
+fi
+
+INFO=$(readelf -p .comment "$1" 2>&1)
+echo $INFO | grep -v 'not exist'
+if [ $? -ne 0 ]; then
+    echo "No compiler info available."
+fi

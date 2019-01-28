@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! $# -eq 1 ]; then
+    echo "Please give exactly one path to search."
+    exit 1
+fi
+
+FILES=$(find $1 -type d | xargs -I% sh -c 'if [ ! -f $1/CMakeLists.txt ]; then echo $1; fi' -- %)
+echo $FILES

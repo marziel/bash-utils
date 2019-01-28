@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Please give one exit code."
+    exit 1
+fi
+
+digital='^[0-9]+$'
+if ! [[ $1 =~ $digital ]]; then
+    echo "Not-a-number given for exit code."
+    exit 1
+fi
+
+kill -l $1

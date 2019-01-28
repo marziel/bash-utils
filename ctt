@@ -1,0 +1,45 @@
+#!/bin/bash
+
+object=""
+binary_file_type=""
+
+print_object_info() {
+    stat "$object" 2>/dev/null 1>/dev/null
+    if [ "$?" -ne "0" ]; then
+        echo "Error: no such file or directory."
+        exit 1
+    fi
+    
+    bare_name=$(echo "$object" | sed 's/\/$//g')
+    file_type_info="$1"
+    if [ ! -z "$binary_file_type" ]; then
+        file_type_info="binary $1"
+    fi
+    echo -e "\t\e[7m$bare_name\e[27m: $file_type_info"  
+}
+
+if [ "$#" -ne 1 ]; then
+	echo "Error: wrong number of arguments."
+	exit 1
+fi
+
+object="$1"
+
+if [ -d "$object" ]; then
+    print_object_info directory
+    ls --color=auto -lah "$object"
+    exit
+fi
+
+file -k "$object" | grep -P '(ASCII|Unicode) text' 2>/dev/null 1>/dev/null
+if [ "$?" -ne "0" ]; then
+    binary_file_type="yes"
+fi
+if [ -z "$opts" ]; then
+    print_object_info "file"
+else
+    print_object_info "file [arguments ignored]"
+fi
+if [ -z "$binary_file_type" ]; then
+    cat "$object"
+fi
