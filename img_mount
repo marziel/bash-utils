@@ -19,7 +19,7 @@ fi
 
 OFF_SECTORS=$(sudo parted -s $1 unit s print | tr -s " " | grep -P "^ $2" | cut -d ' ' -f 3 | perl -pe 's/s//g')
 if [ -z "$OFF_SECTORS" ]; then
-    echo "Wrong (non-existent) partition number."
+    echo "Wrong (non-existent) partition number." 1>&2
     exit 1
 fi
 OFF_BYTES=$(echo "$OFF_SECTORS * 512" | bc -l)
