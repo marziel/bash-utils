@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-    echo "Please give one executable file name."
+    echo "Please give one executable file name." 1>&2
     exit 1
 fi
 

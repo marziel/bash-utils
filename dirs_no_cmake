@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! $# -eq 1 ]; then
-    echo "Please give exactly one path to search."
+    echo "Please give exactly one path to search." 1>&2
     exit 1
 fi
 

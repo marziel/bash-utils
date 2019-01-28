@@ -6,7 +6,7 @@ binary_file_type=""
 print_object_info() {
     stat "$object" 2>/dev/null 1>/dev/null
     if [ "$?" -ne "0" ]; then
-        echo "Error: no such file or directory."
+        echo "Error: no such file or directory." 1>&2
         exit 1
     fi
     
@@ -19,7 +19,7 @@ print_object_info() {
 }
 
 if [ "$#" -ne 1 ]; then
-	echo "Error: wrong number of arguments."
+	echo "Error: wrong number of arguments." 1>&2
 	exit 1
 fi
 

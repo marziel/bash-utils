@@ -1,19 +1,19 @@
 #!/bin/bash
 
 if [ $# -ne 2 ]; then
-    echo "Please give: full path to appropriate objdump, executable name."
+    echo "Please give: full path to appropriate objdump, executable name." 1>&2
     exit 1
 fi
 
 ls "$1" 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "Given a non-existent 'objdump'."
+    echo "Given a non-existent 'objdump'." 1>&2
     exit 1
 fi
 
 ls "$2" 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
-    echo "Given a non-existent executable."
+    echo "Given a non-existent executable." 1>&2
     exit 1
 fi
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 
 if [ $# -ne 1 ]; then
-    echo "Please give one exit code."
+    echo "Please give one exit code." 1>&2
     exit 1
 fi
 
 digital='^[0-9]+$'
 if ! [[ $1 =~ $digital ]]; then
-    echo "Not-a-number given for exit code."
+    echo "Not-a-number given for exit code." 1>&2
     exit 1
 fi
 

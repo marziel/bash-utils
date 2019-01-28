@@ -1,22 +1,22 @@
 #!/bin/bash
 
 if [ $# -ne 3 ]; then
-    echo "Please give: start line number, end line number, file name."
+    echo "Please give: start line number, end line number, file name." 1>&2
     exit 1
 fi
 
 digital='^[0-9]+$'
 if ! [[ $1 =~ $digital ]]; then
-    echo "Not-a-number given for start line."
+    echo "Not-a-number given for start line." 1>&2
     exit 1
 fi
 if ! [[ $2 =~ $digital ]]; then
-    echo "Not-a-number given for end line."
+    echo "Not-a-number given for end line." 1>&2
     exit 1
 fi
 
 if [ $1 -gt $2 ]; then
-    echo "Start line number must be less or equal to end line number."
+    echo "Start line number must be less or equal to end line number." 1>&2
     exit 1
 fi
 
