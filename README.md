@@ -12,4 +12,4 @@ Miscellaneous GNU Bash scripts for more comfortable usage of some Linux tools.
 * **retno**: explains the given program return code
 * **which_compiler**: tries to find the information about which compiler was used to build the given executable
 
-Used on Debian Testing.
+Used on Debian Testing. Many of these scripts require additional tools to be present on the system (e.g. a Perl interpreter) so if they won't be found you can install them as needed.
